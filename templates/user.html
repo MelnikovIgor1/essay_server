@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User interface</title>
+</head>
+<body>
+    <h2>username: {{ user.name }}</h2>
+
+    <form action="{{ url_for('upload_essay', username=user.name) }}" method="post" enctype = "multipart/form-data">
+        <label><b>Upload essay</b></label>
+        <br>
+        <input type="text" placeholder="Enter title" name="title" required />
+        <input type="text" placeholder="Enter tags" name="tags" required />
+        <input type="file" name="file" required />
+        <br>
+         <input type = "submit"/>
+        <br>
+        <input type="hidden" value="{{ user }}" name="info">
+    </form>
+
+    <form action="{{ url_for('search', username=user.name) }}" method="post">
+                <br>
+        <label><b>Search</b></label>
+        <br>
+        <input type="text" placeholder="Enter topic" name="tag" required>
+        <button type="submit">search</button>
+        <br>
+        <input type="hidden" value="{{ user }}" name="info">
+    </form>
+
+    {% for file_name in user.loaded_files %}
+        <a href="{{ url_for('static', filename=file_name) }}" style="margin-left: 15px">{{ file_name }}</a>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating new account</title>
+</head>
+<body>
+    <h1>Страничка регистрации пользователя</h1>
+    {% if error  %}
+        <h2>{{ error }}</h2>
+    {% endif %}
+
+    <div class="container">
+        <form action="/create_account" method="post">
+            <label><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+            <br>
+            <label><b>Password </b></label>
+            <input type="text" placeholder="Enter Password" name="psw" required>
+            <br>
+            <label><b>Institution</b></label>
+            <input type="text" placeholder="Enter Institution" name="institution" required>
+            <br>
+
+            <button>Submit</button>
+        </form>
+    </div>
+</body>
+</html>
